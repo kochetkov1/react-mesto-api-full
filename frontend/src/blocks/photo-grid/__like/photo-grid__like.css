@@ -1,0 +1,21 @@
+.photo-grid__like {
+  min-width: 22px;
+  width: 22px;
+  height: 19px;
+
+  margin: 0;
+  padding: 0;
+
+  background-color: transparent;
+  background-image: url(../../../images/like-disabled.svg);
+  background-size: cover;
+  border: none;
+
+  transition: 0.7s;
+
+  cursor: pointer;
+}
+
+.photo-grid__like:hover {
+  opacity: 0.5;
+}

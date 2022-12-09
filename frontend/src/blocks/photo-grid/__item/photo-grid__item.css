@@ -1,0 +1,11 @@
+.photo-grid__item {
+  width: 282px;
+  height: 361px;
+
+  border-radius: 10px;
+  overflow: hidden;
+
+  font-size: 0;
+
+  position: relative;
+}

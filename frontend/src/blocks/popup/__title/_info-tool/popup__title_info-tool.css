@@ -1,0 +1,14 @@
+.popup__title_info-tool {
+  text-align: center;
+  margin: 0;
+  width: 358px;
+  align-self: center;
+}
+
+@media screen and (max-width: 881px) {
+  .popup__title_info-tool {
+    width: 244px;
+    font-size: 20px;
+    line-height: 24px;
+  }
+}

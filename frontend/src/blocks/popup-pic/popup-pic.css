@@ -1,0 +1,21 @@
+.popup-pic {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  z-index: 10;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(0, 0, 0, 0.5);
+
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.7s, opacity 0.5s linear;
+}

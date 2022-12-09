@@ -1,0 +1,26 @@
+.profile__photo-shadow {
+  margin: 0;
+  padding: 0;
+
+  border-radius: 45%;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, .8);
+  opacity: 0;
+  transition: 0.7s;
+
+  background-image: url(../../../images/edit-button-pen.svg);
+  background-size: 26px 26px;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  cursor: pointer;
+}
+
+.profile__photo-shadow:hover {
+  opacity: 1;
+}
