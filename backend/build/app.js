@@ -53,7 +53,7 @@ app.post('/signup', userBodyValidator, createUser);
 app.use('/users', auth, userRouter);
 app.use('/cards', auth, cardRouter);
 
-app.all('/*', (req, res, next) => {
+app.all('/*', auth, (req, res, next) => {
   next(new NotFoundError(errorMessages.incorrectRoute));
 });
 

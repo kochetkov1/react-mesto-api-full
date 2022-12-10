@@ -1,5 +1,6 @@
 .photo-grid {
   max-width: 880px;
+  flex-grow: 1;
   padding: 0 0 66px 0;
 
   display: flex;

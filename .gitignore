@@ -12,7 +12,7 @@ README_react.md
 /coverage
 
 # production
-/build
+**/build
 
 # misc
 .DS_Store
@@ -20,9 +20,9 @@ README_react.md
 .env.development.local
 .env.test.local
 .env.production.local
-.prettierrc
+**/.prettierrc
 
-/backend/.env
+**/.env
 
 /backend/error.log
 /backend/request.log

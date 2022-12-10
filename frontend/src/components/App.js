@@ -41,7 +41,7 @@ function App() {
 
   function handleCardLike(card) {
     // Снова проверяем, есть ли уже лайк на этой карточке
-    const isLiked = card.likes.some((i) => i._id === currentUser._id);
+    const isLiked = card.likes.some((i) => i === currentUser._id);
 
     // Отправляем запрос в API и получаем обновлённые данные карточки
     api
@@ -154,7 +154,6 @@ function App() {
         if (res.token) {
           setLoggedIn(true);
           setUserEmail(email);
-          console.log('Токен при входе:', res.token);
           localStorage.setItem('jwt', res.token);
         }
         navigate('/');
@@ -207,7 +206,7 @@ function App() {
           console.log(err);
         });
     }
-  }, [loggedIn]);
+  }, [loggedIn, registeredIn]);
 
   React.useEffect(() => {
     if (loggedIn) {
@@ -220,7 +219,7 @@ function App() {
           console.log(err);
         });
     }
-  }, [loggedIn]);
+  }, [loggedIn, registeredIn]);
 
   React.useEffect(() => {
     if (loggedIn) {
