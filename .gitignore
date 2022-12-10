@@ -16,6 +16,8 @@ README_react.md
 
 # misc
 .DS_Store
+.env
+.prettierrc
 .env.local
 .env.development.local
 .env.test.local
