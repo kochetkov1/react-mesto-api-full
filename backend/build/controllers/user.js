@@ -121,8 +121,6 @@ export const login = (req, res, next) => {
   const { JWT_SECRET } = req.app.get('config');
   return User.findUserByCredentials(email, password)
     .then((user) => {
-      //
-      // const token = jwt.sign({ _id: user._id }, 'super-secret-key', {
       const token = jwt.sign({ _id: user._id }, JWT_SECRET, {
         expiresIn: '7d',
       });

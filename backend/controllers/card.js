@@ -30,9 +30,7 @@ export const deleteCard = (req, res, next) => {
       if (document) {
         const card = document.toObject();
         if (card.owner.toString() === req.user._id) {
-        // if (card.owner === req.user._id) {
           document.remove();
-          // res.send({ data: card });
           res.send(card);
         } else next(new ForbiddenError(errorMessages.cardDeleteNotOwner));
       } else next(new NotFoundError(errorMessages.cardNotFound));

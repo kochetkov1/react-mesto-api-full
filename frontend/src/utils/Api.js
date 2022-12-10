@@ -79,18 +79,9 @@ class Api {
   }
 }
 
-// const api = new Api({
-//   url: "https://mesto.nomoreparties.co/v1/cohort-48",
-//   headers: {
-//     authorization: "6b344dfe-98cc-405b-b96d-fa3acd60d0b1",
-//     "Content-Type": "application/json",
-//   },
-// });
-
 const jwt = localStorage.getItem('jwt');
 
 const api = new Api({
-  // url: 'http://localhost:3000',
   url: 'https://api.kochetkov1.nomoredomains.club',
   headers: {
     'Content-type': 'application/json',

@@ -179,7 +179,6 @@ function App() {
 
   function tokenCheck() {
     const jwt = localStorage.getItem('jwt');
-    console.log('Токен при загрузке:', jwt);
     if (jwt !== null && jwt !== 'undefined') {
       getContent(jwt)
         .then((res) => {
