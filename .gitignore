@@ -24,6 +24,9 @@ README_react.md
 
 /backend/.env
 
+/backend/error.log
+/backend/request.log
+
 /frontend/.prettierrc
 /backend/.prettierrc
 
