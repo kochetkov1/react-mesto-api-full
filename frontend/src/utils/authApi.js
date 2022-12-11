@@ -1,4 +1,7 @@
-export const BASE_URL = 'https://api.kochetkov1.nomoredomains.club';
+export const options = {
+  baseUrl: 'https://api.kochetkov1.nomoredomains.club',
+  body: {},
+};
 
 function handleServerResponse(res) {
   return res.ok
@@ -7,7 +10,7 @@ function handleServerResponse(res) {
 }
 
 function register(email, password) {
-  return fetch(`${BASE_URL}/signup`, {
+  return fetch(`${options.baseUrl}/signup`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -17,7 +20,7 @@ function register(email, password) {
 }
 
 function authorization(email, password) {
-  return fetch(`${BASE_URL}/signin`, {
+  return fetch(`${options.baseUrl}/signin`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -27,11 +30,11 @@ function authorization(email, password) {
 }
 
 function getContent(jwt) {
-  return fetch(`${BASE_URL}/users/me`, {
+  return fetch(`${options.baseUrl}/users/me`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${jwt}`,
+      Authorization: `Bearer ${jwt}`,
     },
   }).then(handleServerResponse);
 }

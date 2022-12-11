@@ -1,13 +1,21 @@
-class Api {
-  constructor(data) {
-    this._url = data.url;
-    this._headers = data.headers;
+export class Api {
+  constructor(options, jwt) {
+    this._url = options.baseUrl;
+    this._headers = {
+      'Content-type': 'application/json',
+      Authorization: `Bearer ${jwt}`,
+    };
   }
 
   _handleServerResponse(res) {
     return res.ok
       ? res.json()
       : Promise.reject(`Ошибка. Запрос не выполнен: ${res.status}`);
+  }
+
+  setToken(jwt) {
+    console.log('отработал сетТокен');
+    this._headers.Authorization = `Bearer ${jwt}`;
   }
 
   getUserProfile() {
@@ -79,14 +87,4 @@ class Api {
   }
 }
 
-const jwt = localStorage.getItem('jwt');
-
-const api = new Api({
-  url: 'https://api.kochetkov1.nomoredomains.club',
-  headers: {
-    'Content-type': 'application/json',
-    'Authorization': `Bearer ${jwt}`,
-  },
-});
-
-export default api;
+export default Api;
