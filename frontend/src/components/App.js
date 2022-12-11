@@ -175,57 +175,136 @@ function App() {
     // Переадресация на страницу входа
     navigate('/sign-in');
   }
+  // test
+  // React.useEffect(() => {
+  //   Promise.all([api.getUserProfile(), api.getInitialCards()])
+  //     .then(([data, initialCards]) => {
+  //       setCurrentUser(data);
+  //       setCards(initialCards);
+  //     })
+  //     .catch((err) => {
+  //       console.log("Ошибка при загрузке данных", err);
+  //     });
+  // }, [loggedIn]);
+  // test
 
+  // function tokenCheck() {
+  //   const jwt = localStorage.getItem('jwt');
+  //   if (jwt !== null && jwt !== 'undefined') {
+  //     getContent(jwt)
+  //       .then((res) => {
+  //         setLoggedIn(true);
+  //         setUserEmail(res.email);
+  //         console.log(res);
+  //         navigate('/');
+  //       })
+  //       .catch((err) => {
+  //         console.log('Ошибка токена:', err);
+  //       });
+  //   }
+  // }
+
+  // mesto2
+  // React.useEffect(() => {
+  //   tokenCheck();
+  // }, []);
+
+  // эксперимент-----------------------
   function tokenCheck() {
     const jwt = localStorage.getItem('jwt');
-    if (jwt !== null && jwt !== 'undefined') {
-      getContent(jwt)
-        .then((res) => {
-          setLoggedIn(true);
-          setUserEmail(res.email);
-          navigate('/');
-        })
-        .catch((err) => {
-          console.log('Ошибка токена:', err);
-        });
-    }
+    getContent(jwt)
+      if (jwt) {
+        console.log(jwt);
+        Promise.all([api.getUserProfile(), api.getInitialCards()])
+          .then(([data, initialCards]) => {
+            if (data && initialCards) {
+              setLoggedIn(true);
+              setUserEmail(data.email);
+              setCurrentUser(data);
+              console.log('установили данные пользователя:', data);
+              setCards(initialCards.slice().reverse());
+              navigate('/');
+            } else {
+              setLoggedIn(false);
+              navigate('/sign-in');
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+            setIsStatusPopupOpen(!isStatusPopupOpen);
+          });
+      } else {
+        setLoggedIn(false);
+        navigate('/sign-in');
+      }
+
   }
 
   React.useEffect(() => {
     tokenCheck();
   }, []);
+  // эксперимент-----------------------
 
-  React.useEffect(() => {
-    if (loggedIn) {
-      api
-        .getInitialCards()
-        .then((initialCards) => {
-          setCards(initialCards);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-  }, [loggedIn, registeredIn]);
+  // React.useEffect(() => {
+  //   if (loggedIn) {
+  //     api
+  //       .getInitialCards()
+  //       .then((initialCards) => {
+  //         setCards(initialCards);
+  //       })
+  //       .catch((err) => {
+  //         console.log(err);
+  //       });
+  //   }
+  // }, [loggedIn]);
 
-  React.useEffect(() => {
-    if (loggedIn) {
-      api
-        .getUserProfile()
-        .then((data) => {
-          setCurrentUser(data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-  }, [loggedIn, registeredIn]);
+  // React.useEffect(() => {
+  //   if (loggedIn) {
+  //     api
+  //       .getUserProfile()
+  //       .then((data) => {
+  //         setCurrentUser(data);
+  //       })
+  //       .catch((err) => {
+  //         console.log(err);
+  //       });
+  //   }
+  // }, [loggedIn]);
+
+  //test2
+  // React.useEffect(() => {
+  //   api
+  //     .getInitialCards()
+  //     .then((initialCards) => {
+  //       setCards(initialCards);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, [loggedIn]);
+
+  // React.useEffect(() => {
+  //   api
+  //     .getUserProfile()
+  //     .then((data) => {
+  //       setCurrentUser(data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, [loggedIn]);
+  //test2
 
   React.useEffect(() => {
     if (loggedIn) {
       setRegisteredIn(false);
     }
   }, [loggedIn]);
+
+  // mesto1
+  // React.useEffect(() => {
+  //   tokenCheck();
+  // }, [loggedIn]);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
